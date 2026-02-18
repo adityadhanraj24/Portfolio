@@ -33,18 +33,18 @@ const Navbar = () => {
         scrolled ? "bg-background/90 backdrop-blur-md shadow-lg shadow-primary/5" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between py-4">
-        <Link to="/" className="text-2xl font-display font-bold text-gradient">
+      <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-4 sm:px-6">
+        <Link to="/" className="text-xl sm:text-2xl font-display font-bold text-gradient">
           Portfolio<span className="text-foreground"></span>
         </Link>
 
         {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <li key={link.name}>
               <Link
                 to={`/${link.href}`}
-                className="text-xl text-muted-foreground hover:text-primary transition-colors duration-200"
+                className="text-sm lg:text-base text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 {link.name}
               </Link>
@@ -52,11 +52,11 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3 lg:gap-4">
           <ThemeToggle />
           <Link
             to="/#contact"
-            className="inline-flex px-5 py-2 rounded-lg text-sm font-medium glow-border text-primary hover:bg-primary/10 transition-all duration-200"
+            className="inline-flex px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium glow-border text-primary hover:bg-primary/10 transition-all duration-200"
           >
             Hire Me
           </Link>
@@ -80,13 +80,13 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-card/95 backdrop-blur-md border-t border-border"
           >
-            <ul className="flex flex-col items-center gap-4 py-6">
+            <ul className="flex flex-col items-center gap-3 py-4 px-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={`/${link.href}`}
                     onClick={() => setMobileOpen(false)}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
