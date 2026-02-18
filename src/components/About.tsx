@@ -23,7 +23,7 @@ const About = () => {
           {/* <p className="text-muted-foreground">A little about who I am</p> */}
         </motion.div>
 
-<div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8">
+<div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8">
             {[
               { value: "6+", label: "Projects" },
               { value: "3+", label: "Internships" },

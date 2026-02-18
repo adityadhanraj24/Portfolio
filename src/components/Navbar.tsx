@@ -52,11 +52,11 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center gap-3 lg:gap-4">
+        <div className="flex items-center gap-3 lg:gap-4">
           <ThemeToggle />
           <Link
             to="/#contact"
-            className="inline-flex px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium glow-border text-primary hover:bg-primary/10 transition-all duration-200"
+            className="hidden md:inline-flex px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium glow-border text-primary hover:bg-primary/10 transition-all duration-200"
           >
             Hire Me
           </Link>
@@ -92,9 +92,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              <li>
-                <ThemeToggle />
-              </li>
+            
             </ul>
           </motion.div>
         )}
