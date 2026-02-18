@@ -45,27 +45,27 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding" ref={ref}>
+    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6" ref={ref}>
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-display font-bold mb-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2">
             Get In <span className="text-gradient">Touch</span>
           </h2>
-          <p className="text-muted-foreground">Let's work together</p>
+          <p className="text-sm sm:text-base text-muted-foreground">Let's work together</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4"
+            className="space-y-3 sm:space-y-4"
           >
             {[
               { icon: Mail, label: "Email", value: "dhanrajaditya743@email.com", href: "mailto:dhanrajaditya743@email.com" },
@@ -78,14 +78,14 @@ const Contact = () => {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-card rounded-xl border border-border card-hover"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-lg sm:rounded-xl border border-border card-hover"
               >
-                <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <item.icon size={18} />
+                <div className="p-2 sm:p-2.5 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                  <item.icon size={16} className="sm:w-5 sm:h-5" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs text-muted-foreground">{item.label}</p>
-                  <p className="text-sm text-foreground">{item.value}</p>
+                  <p className="text-xs sm:text-sm text-foreground truncate">{item.value}</p>
                 </div>
               </a>
             ))}
@@ -97,7 +97,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-card rounded-xl p-6 border border-border space-y-4"
+            className="bg-card rounded-lg sm:rounded-xl p-4 sm:p-6 border border-border space-y-3 sm:space-y-4"
           >
             <input
               type="text"
@@ -105,7 +105,7 @@ const Contact = () => {
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-muted border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
             />
             <input
               type="email"
@@ -113,23 +113,23 @@ const Contact = () => {
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-muted border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
             />
             <textarea
               placeholder="Your Message"
               required
-              rows={5}
+              rows={4}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-muted border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
             />
             {error && (
-              <p className="text-sm text-red-500">{error}</p>
+              <p className="text-xs sm:text-sm text-red-500">{error}</p>
             )}
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-2.5 sm:py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all flex items-center justify-center gap-2 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 "Sending..."
