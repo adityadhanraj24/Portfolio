@@ -46,7 +46,7 @@ const Hero = () => {
               View Projects <ExternalLink size={16} />
             </a>
             <a
-              href="/Aditya_Dhanraj_Resume.pdf"
+              href="/Adityaresume.pdf"
               download="Aditya_Dhanraj_Resume.pdf"
               className="px-6 py-3 rounded-lg glow-border text-primary font-medium hover:bg-primary/10 transition-all duration-200 flex items-center gap-2"
             >
