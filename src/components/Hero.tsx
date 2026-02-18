@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, ExternalLink, Download, ArrowDown } from "lucide-react";
-import resume from "../../image/Adityaresume.pdf";
 
 const Hero = () => {
   return (
@@ -47,7 +46,7 @@ const Hero = () => {
               View Projects <ExternalLink size={16} />
             </a>
             <a
-              href={resume}
+              href="/Aditya_Dhanraj_Resume.pdf"
               download="Aditya_Dhanraj_Resume.pdf"
               className="px-6 py-3 rounded-lg glow-border text-primary font-medium hover:bg-primary/10 transition-all duration-200 flex items-center gap-2"
             >

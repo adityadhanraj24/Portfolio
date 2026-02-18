@@ -1,18 +1,47 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Mail, Phone, Linkedin, Github, Send } from "lucide-react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Initialize EmailJS once when component mounts
+  useEffect(() => {
+    emailjs.init("P4GcMa6Jx5BDDe1Hz"); // Replace with your EmailJS public key
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setForm({ name: "", email: "", message: "" });
+    setLoading(true);
+    setError("");
+
+    try {
+      await emailjs.send(
+        "service_tqmeu9s", // Replace with your EmailJS service ID
+        "template_qnrtipy", // Replace with your EmailJS template ID
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+          to_email: "dhanrajaditya743@email.com",
+        }
+      );
+
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 3000);
+      setForm({ name: "", email: "", message: "" });
+    } catch (err: any) {
+      setError("Failed to send message. Please try again.");
+      console.error("EmailJS error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -94,11 +123,19 @@ const Contact = () => {
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
             />
+            {error && (
+              <p className="text-sm text-red-500">{error}</p>
+            )}
             <button
               type="submit"
-              className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
+              disabled={loading}
+              className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {submitted ? "Message Sent! ✓" : (
+              {loading ? (
+                "Sending..."
+              ) : submitted ? (
+                "Message Sent! ✓"
+              ) : (
                 <>Send Message <Send size={16} /></>
               )}
             </button>
